@@ -1,0 +1,20 @@
+apiVersion: apps/v1 # Pods are part of v1 APIs
+kind: Deployment
+metadata:
+  name: nginx-deployment
+spec:
+  replicas: 3 #how many pods I want to start
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 80
+

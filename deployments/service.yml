@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+spec:
+  selector:
+    app: nginx # HERE IT IS FOR IDENIFYING IN THOSE PODS, WHERE APP IS SET TO NGINX, FORWARD TRAFFIC OVER THERE
+  ports:
+    - protocol: TCP
+      port: 80 # INTERNAL PORT
+      targetPort: 80 
+      nodePort: 30007  # This port can be any valid port within the NodePort range(WHERE WE CAN HIT THE SERVICE)
+  type: NodePort
